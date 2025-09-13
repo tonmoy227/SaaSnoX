@@ -1,0 +1,118 @@
+.sn-header-section {
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	position: absolute;
+	.navbar-nav {
+		flex-direction: row;
+	}
+	.sn-header-content {
+		margin: 0 auto;
+		max-width: 1845px;
+		padding: 25px 15px;
+	}
+	.sn-mobile-menu-btn {
+		display: none;
+		@media #{$md,$sm,$xs,$xxs} {
+			display: block;
+		}
+		button {
+			padding: 0;
+			width: 30px;
+			height: 18px;
+			border: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: transparent;
+			justify-content: space-between;
+			span {
+				width: 19px;
+				height: 2px;
+				display: block;
+				background-color: #000;
+				&:nth-child(even) {
+					width: 29px;
+				}
+			}
+		}
+	}
+	.main-navigation {
+		font-family: var(--sn-heading);
+		@media #{$md,$sm,$xs,$xxs} {
+			display: none;
+		}
+		li {
+			margin: 0px 15px;
+			@media #{$lg} {
+				margin: 0px 3px;
+			}
+			a {
+				z-index: 1;
+				font-size: 18px;
+				display: inline;
+				padding-top: 6px;
+				padding-left: 15px;
+				position: relative;
+				letter-spacing: -1px;
+				padding-bottom: 30px;
+				padding-right: 15px;
+				color: var(--sn-black1);
+				@media #{$lg} {
+					padding-left: 12px;
+					padding-right: 12px;
+				}
+				&:before {
+					top: 0;
+					left: 0;
+					z-index: -1;
+					width: 100%;
+					content: '';
+					height: 0%;
+					max-height: 33px;
+					position: absolute;
+					border-radius: 26px;
+					transition: all 500ms ease-in-out;
+					background: linear-gradient(180deg, #F4F4F4 0%, #D8D8D8 100%);
+				}
+			}
+			&:hover {
+				a {
+					&:before {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+	.sn-btn-grp {
+		gap: 16px;
+		.sn-btn1 {
+			@media #{$xs,$xxs} {
+				display: none !important;
+			}
+			a {
+				span {
+					padding: 13px 25px;
+				}
+			}
+		}
+		.sign_up_btn {
+			font-size: 16px;
+			line-height: 1;
+			font-weight: 500;
+			padding: 14px 25px;
+			border-radius: 10px;
+			color: var(--sn-black1);
+			border: 2px solid #D5D7DA7A;
+			@media #{$xs,$xxs} {
+				display: none !important;
+			}
+			&:hover {
+				box-shadow: 0px 0px 20px 0px #00000029;
+			}
+		}
+
+	}
+}
