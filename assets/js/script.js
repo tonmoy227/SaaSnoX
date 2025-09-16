@@ -245,5 +245,67 @@ Last change:    00/00/00
 		});
 	};
 
+	if($('.sn_line_split').length) {
+		var txtSplit = $('.sn_line_split');
+		if(txtSplit.length == 0) return; gsap.registerPlugin(SplitText); txtSplit.each(function(index, el) {
+			el.split = new SplitText(el, { 
+				type: "lines",
+				linesClass: "split-line"
+			});
+		});
+	}
+
+	var quick_view = new Swiper(".sn-testi-thumb", {
+		loop: true,
+		spaceBetween: 0,
+		slidesPerView: 4,
+		speed: 1000,
+		autoplay: {
+			enabled: true,
+			delay: 5000
+		},
+		breakpoints: {  
+			'1400': {
+				slidesPerView: 4,
+			},
+			'1200': {
+				slidesPerView: 3,
+			},
+			'1199': {
+				slidesPerView: 3,
+			},
+			'768': {
+				slidesPerView: 3,
+			},
+			'576': {
+				slidesPerView: 2,
+			},
+			'0': {
+				slidesPerView: 1,
+			},
+		},
+	});
+	var swiper2 = new Swiper(".sn-testi-slider", {
+		loop: true,
+		spaceBetween: 0,
+		speed: 1000,
+		effect: "fade",
+		slidesPerView: 1,
+		autoplay: {
+			enabled: true,
+			delay: 5000
+		},
+		thumbs: {
+			swiper: quick_view,
+		},
+	});
+
+
+	$(document).on('click', '.sn-faq-content .accordion-item', function(){
+		$(this).addClass('faq_active').siblings().removeClass('faq_active')
+	});
+
+
+	
 
 })(jQuery);

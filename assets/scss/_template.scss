@@ -1,12 +1,13 @@
 /*=========
 Font load
 ===========*/
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
 	--sn-body-color: #74787C;
 	--sn-black1: #000000;
 	--sn-heading: "Public Sans", sans-serif;
 	--sn-body-font: "DM Sans", sans-serif;
+	--sn-inter: "Inter", sans-serif;
 	--sn-prime-c: #683BF2;
 	--cube-1: cubic-bezier(0.55, 0.085, 0, 0.99);
 	--cube-2: all .25s cubic-bezier(.645,.045,.355,1);

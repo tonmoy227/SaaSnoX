@@ -1,4 +1,5 @@
 .sn-testi-top {
+	gap: 20px 30px;
 	.sn-sec-title {
 		max-width: 600px;
 	}
@@ -11,22 +12,54 @@
 }
 .sn-testi-item {
 	.item-icon {
+		opacity: 0;
 		line-height: 1;
 		font-size: 68px;
-		margin-bottom: 30px;
+		margin-bottom: 35px;
 		color: var(--sn-black1);
+		transform: translateY(20px);
+		transition: 1000ms cubic-bezier(0.5, -0.75, 0.3, 2.5);
 	}
 	.item-text {
 		margin: 0 auto;
 		font-size: 28px;
 		max-width: 850px;
 		font-weight: 300;
+		margin-bottom: 65px;
 		color: var(--sn-black1);
+		@media #{$xs} {
+			font-size: 24px;
+		}
+		@media #{$xxs} {
+			font-size: 20px;
+		}
+		.split-line {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: 1000ms cubic-bezier(0.5, -0.75, 0.3, 2.5);
+		}
 	}
 }
 .sn-tst-thumb-item {
 	gap: 16px;
+	z-index: 1;
+	opacity: .6;
+	cursor: pointer;
 	padding: 18px 30px;
+	position: relative;
+	transition: all 500ms ease-in-out;
+	border-top: 2px solid transparent;
+	&:before {
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 0%;
+		content: '';
+		position: absolute;
+		transition: all 500ms ease-in-out;
+		background: linear-gradient(180deg, #CFDFFF 0%, #E8EAEC 100%);
+	}
 	.item-img {
 		width: 56px;
 		height: 56px;
@@ -49,4 +82,53 @@
 
 .sn-testi-thumb {
 	border-top: 1px solid #00000029;
+}
+.swiper-slide-thumb-active {
+	.sn-tst-thumb-item {
+		opacity: 1;
+		position: relative;
+		border-top: 2px solid #605BFF;
+		&:before {
+			height: 100%;
+		}
+	}
+}
+.swiper-slide-active {
+	.sn-testi-item {
+		.item-icon {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+		.item-text {
+			.split-line {
+				opacity: 1;
+				transform: translateY(0px);
+				&:nth-child(1) {
+					transition-delay: 100ms;
+				}
+				&:nth-child(2) {
+					transition-delay: 200ms;
+				}
+				&:nth-child(3) {
+					transition-delay: 300ms;
+				}
+				&:nth-child(4) {
+					transition-delay: 400ms;
+				}
+				&:nth-child(5) {
+					transition-delay: 500ms;
+				}
+				&:nth-child(6) {
+					transition-delay: 600ms;
+				}
+				&:nth-child(7) {
+					transition-delay: 700ms;
+				}
+				&:nth-child(8) {
+					transition-delay: 800ms;
+				}
+
+			}
+		}
+	}
 }

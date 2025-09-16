@@ -1,0 +1,82 @@
+.sn-faq-content {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 45px;
+	overflow: hidden;
+	max-width: 1000px;
+	border-radius: 8px;
+	border: 1px solid #242D3133;
+	@media #{$md,$sm,$xs,$xxs} {
+		max-width: 100%;
+	}
+	.accordion-item,
+	.accordion-button:not(.collapsed),
+	.accordion-button {
+		background-color: transparent;
+	}
+	.accordion-item {
+		border: none;
+		padding: 35px 40px;
+		border-bottom: 1px solid #242D3133;
+		transition: all 500ms ease-in-out;
+		&:last-child {
+			border-bottom: none;
+		}
+		@media #{$xxs} { 
+			padding: 23px 15px 23px 25px;
+		}
+		&:is(.faq_active) {
+			background-color: #fff;
+		}
+	}
+	.accordion-button {
+		padding: 0;
+		border: none;
+		font-size: 20px;
+		font-weight: 500;
+		position: relative;
+		color: var(--sn-black1);
+		transition: all 500ms ease;
+		span {
+			max-width: 85%;
+			display: inline-block;
+		}
+	}
+
+	.accordion-button:focus {
+		border: none;
+		box-shadow: none;
+	}
+	.accordion-body {
+		color: #535862;
+		font-size: 18px;
+		line-height: 30px;
+		line-height: 1.667;
+		padding: 5px 0px 0px;
+		font-family: var(--sn-inter);
+	}
+	.accordion-button::after {
+		top: 5px;
+		right: 0;
+		opacity: .7;
+		font-size: 16px;
+		content: '\f078';
+		font-weight: 900;
+		position: absolute;
+		border-radius: 100%;
+		background-image: none;
+		color: var(--agt-base-color-9);
+		font-family: 'Font Awesome 6 free';
+		transition: all 500ms ease;
+	}
+	.accordion-button:not(.collapsed) { 
+		box-shadow: none;
+		font-weight: 600;
+		padding-bottom: 15px;
+		&:after {
+			opacity: 1;
+			content: '\f078';
+			color: #FF9951;
+		}
+	}
+}

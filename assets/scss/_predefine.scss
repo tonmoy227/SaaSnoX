@@ -155,7 +155,7 @@ body::-webkit-scrollbar-thumb {
 	}
 }
 .sn-scrollup {
-	color: #fff;
+	color: #000;
 	width: 70px;
 	right: 20px;
 	z-index: 5;
@@ -166,8 +166,8 @@ body::-webkit-scrollbar-thumb {
 	position: fixed;
 	font-weight: 700;
 	line-height: 72px;
-	background: var(--sn-prime-c1);
 	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	background: linear-gradient(94.57deg, #34C9FF 0%, #8BA3FF 33.06%, #FD76E8 66.11%, #FF9951 100%);
 	i {
 		color: #fff;
 	}
@@ -295,6 +295,7 @@ a {
 	list-style: none;
 	padding: 0;
 	z-index: 1;
+	display: flex;
 }
 .tx-tab-btn {
 	.nav-tabs .nav-item.show .nav-link,
@@ -326,6 +327,7 @@ a {
 	background-color: rgba(255, 255, 255, .12);
 	a {
 		z-index: 1;
+		padding: 2px;
 		overflow: hidden;
 		font-weight: 500;
 		position: relative;
@@ -336,14 +338,14 @@ a {
 			padding: 18px 25px;
 			position: relative;
 			&:after {
-				top: 2px;
-				left: 1.5px;
+				top: 0px;
+				left: 0px;
 				z-index: -1;
+				width: 100%;
 				content: '';
+				height: 100%;
 				position: absolute;
-				border-radius: 11px;
-				width: calc(100% - 4px);
-				height: calc(100% - 4px);
+				border-radius: 10px;
 				background: linear-gradient(180deg, #FFFFFF 0%, #DDD1DC 46.15%, #FFFFFF 100%);
 
 			}
@@ -375,8 +377,23 @@ a {
 	.sec_title {
 		font-size: 44px;
 		font-weight: 600;
-		letter-spacing: -1px;
 		line-height: 1.1;
+		letter-spacing: -1px;
+		@media #{$md} {
+			font-size: 40px;
+		}
+		@media #{$sm} {
+			font-size: 38px;
+		}
+		@media #{$xs} {
+			font-size: 34px;
+		}
+		@media #{$xxs} {
+			font-size: 30px;
+		}
+		@media #{$xxxs} {
+			font-size: 26px;
+		}
 	}
 	p {
 		padding-top: 20px;
