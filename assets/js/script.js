@@ -122,11 +122,26 @@ Last change:    00/00/00
 		return false;
 	});
 
+
+	const boxes = gsap.utils.toArray('.txt_item_active');
+	boxes.forEach(svg => {
+		gsap.to(svg, {
+			scrollTrigger: {
+				trigger: svg,
+				start: "top 100%",
+				end: "bottom bottom",
+				toggleClass: "active",
+				duration: 3,
+				delay:1,
+				toggleActions: "play play play reverse",
+				once: true,
+			}
+		});
+	});
+
 	// windows-loaded-before-functions
 	document.addEventListener("DOMContentLoaded", function () {
 		window.addEventListener('load', function(){
-
-
 
 			let preloader = document.querySelector("#preloader");
 			if (preloader) {
@@ -134,14 +149,122 @@ Last change:    00/00/00
 				setTimeout(function () {
 					preloader.remove();
 				}, 1000 ) ;
-
 			}
+
+			gsap.utils.toArray(".sn-text p").forEach(paragraph => {
+				let timeline = gsap.timeline({
+					scrollTrigger: {
+						trigger: paragraph,
+						start: "top 90%",
+						end: "bottom 60%",
+						toggleActions: "play none none none"
+					}
+				});
+				let splitText = new SplitText(paragraph, { type: "lines" });
+				gsap.set(paragraph, { perspective: 400 });
+				timeline.from(splitText.lines, {
+					opacity: 0,
+					rotationX: -80,
+					transformOrigin: "top center -50",
+					force3D: true,
+					duration: 1,
+					delay: 0.5,
+					stagger: 0.1
+				});
+			});
+
 			setTimeout(function() {
-				
+				if($(".sn_title").length) {
+					var AGTTitleAni = $(".sn_title");
+					if(AGTTitleAni.length == 0) return; gsap.registerPlugin(SplitText); AGTTitleAni.each(function(index, el) {
+
+						el.split = new SplitText(el, { 
+							type: "chars",
+							linesClass: "split-line"
+						});
+
+						gsap.set(el, { perspective: 400 });
+
+						if( $(el).hasClass('sn_title_1') ){
+							gsap.set(el.split.chars, {
+								x: 100,
+								scaleX: 0,
+								opacity: 0,
+							});
+						}
+						el.anim = gsap.to(el.split.chars, {
+							scrollTrigger: {
+								trigger: el,
+								start: "top 90%",
+								toggleActions: "play reverse play reverse",
+								markers: false,
+							},
+							x: 0,
+							y: 0,
+							scaleX: 1,
+							opacity: 1,
+							duration: .5,
+							stagger: .04,
+							ease: "power1.inOut",
+						});
+
+					});
+				}
+				if($('.sn-itm-title').length) {
+					var txtheading = $(".sn-itm-title");
+					if(txtheading.length == 0) return; gsap.registerPlugin(SplitText); txtheading.each(function(index, el) {
+						el.split = new SplitText(el, { 
+							type: "lines,words,chars",
+							linesClass: "split-line"
+						});
+						if( $(el).hasClass('sn-itm-anim') ){
+							gsap.set(el.split.chars, {
+								opacity: .3,
+								x: "-7",
+							});
+						}
+						el.anim = gsap.to(el.split.chars, {
+							scrollTrigger: {
+								trigger: el,
+								start: "top 92%",
+								end: "top 60%",
+								markers: false,
+								scrub: 1,
+							},
+
+							x: "0",
+							y: "0",
+							opacity: 1,
+							duration: .7,
+							stagger: 0.2,
+						});
+
+					});
+				}
 			}, 700);
+			gsap.utils.toArray('.sn-hero-img').forEach((el) => { 
+				let tlcta = gsap.timeline({
+					scrollTrigger: {
+						trigger: el,
+						start: "top 130%",
+						end: "top 50%", 
+						duration: 2,
+						scrub: 1, 
+						toggleActions: "play none none reverse",
+						markers: false
+					}
+				});
+
+				tlcta.set(el, { transformOrigin: 'center center', transformPerspective: 1000 })
+				.fromTo(el, { rotationX: 50, y: 50,  scale: 1 }, { rotationX: 0, y: 0,  ease: "none" }
+					);
+			});
 		})		
 	});
-	
+	$('.counter').counterUp({
+		delay: 20,
+		time: 5000
+	});
 	if ($('.sn-client-slider').length > 0 ) {
 		var slider = new Swiper('.sn-client-slider', {
 			spaceBetween: 60,
@@ -304,8 +427,114 @@ Last change:    00/00/00
 	$(document).on('click', '.sn-faq-content .accordion-item', function(){
 		$(this).addClass('faq_active').siblings().removeClass('faq_active')
 	});
+	gsap.utils.toArray(' .sn-feature-badge .item-line').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 3,
+				start: "top 70%",
+				end: "bottom 50%",
+				toggleActions: "play reverse none reverse",
+				markers: false,
+			}
+		})
 
+		tlcta
+		.set(el, {transformOrigin: 'right right'})
+		.fromTo(el, { clipPath: "polygon(0 0, 0 100%, 0 100%, 0 0)"}, { clipPath: "polygon(0 0, 0 100%, 100% 100%, 100% 0)", duration: 1})
+	});
+	gsap.utils.toArray(' .sn-feature-badge .item-icon').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 3,
+				start: "top 90%",
+				end: "bottom 50%",
+				toggleActions: "play reverse none reverse",
+				markers: false,
+			}
+		})
 
+		tlcta
+		.from(el, { opacity: 0, scale: 0,  y: -30})
+	});
+	if (window.matchMedia("(min-width: 1200px)").matches) { 
+		var SNFEAT = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.sn-feature-item4',
+				start: "top 50%",
+				toggleActions: 'play none none reverse',
+				markers: false,
+			}
+
+		});
+		SNFEAT
+		.from(".sn-feature-item4 .sn-shape2", { opacity: 0,  yPercent: 100, duration: .5,   ease: "power1.out" })
+		.from(".sn-feature-item4 .sn-shape1", { opacity: 0,  yPercent: 100, duration: .5,   ease: "power1.out" })
+		.from(".sn-feature-item4 .item-img", { opacity: 0,  yPercent: 100, duration: .5,   ease: "power1.out" })
+		
+	};
 	
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const e = document.getElementById("filt-monthly"),
+		d = document.getElementById("filt-hourly"),
+		t = document.getElementById("switcher"),
+		m = document.getElementById("monthly"),
+		y = document.getElementById("hourly");
+
+		if (!e || !d || !t || !m || !y) {
+			console.warn("Toggle elements not found in DOM");
+			return;
+		}
+
+		const activate = (mode) => {
+			const isHourly = mode === "hourly";
+			t.checked = isHourly;
+			e.classList.toggle("toggler--is-active", !isHourly);
+			d.classList.toggle("toggler--is-active", isHourly);
+			m.classList.toggle("hide", isHourly);
+			y.classList.toggle("hide", !isHourly);
+		};
+
+		e.addEventListener("click", () => activate("monthly"));
+		d.addEventListener("click", () => activate("hourly"));
+		t.addEventListener("click", () => activate(t.checked ? "hourly" : "monthly"));
+	});
+
+	gsap.utils.toArray(' .sn-line-shape').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 3,
+				start: "top 70%",
+				end: "bottom 50%",
+				toggleActions: "play reverse none reverse",
+				markers: false,
+			}
+		})
+
+		tlcta
+		.set(el, {transformOrigin: 'right right'})
+		.fromTo(el, { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)"}, { clipPath: "polygon(100% 0, 0 0, 0 100%, 100% 100%)", duration: 1})
+	});
+
+
+	gsap.utils.toArray(' .top_view').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 2,
+				start: "top 90%",
+				end: "top 90%",
+				toggleActions: "play none none reverse",
+				markers: false
+			}
+		})
+
+		tlcta
+		.set(el, {transformOrigin: 'center center'})
+		.from(el, { opacity: 0,  yPercent: 100}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+	});
 
 })(jQuery);

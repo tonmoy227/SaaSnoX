@@ -30,6 +30,29 @@
 		border-radius: 24px;
 	}
 }
+@keyframes breathing {
+	0%, 100% {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	50% {
+		transform: scale(1.05);
+		opacity: 1;
+	}
+}
+
+/* Color shifting animation */
+@keyframes colorShift {
+	0% {
+		filter: blur(110px) hue-rotate(0deg);
+	}
+	50% {
+		filter: blur(120px) hue-rotate(180deg);
+	}
+	100% {
+		filter: blur(110px) hue-rotate(360deg);
+	}
+}
 .sn-hero-circle-shape {
 	top: 42%;
 	left: 0;
@@ -43,6 +66,7 @@
 		margin-left: -30px;
 		border-radius: 100%;
 		filter: blur(110px);
+		animation: breathing 6s ease-in-out infinite, colorShift 8s linear infinite;
 		&:is(.circle-shape1) {
 			background-color: #605BFF;
 		}
@@ -59,14 +83,18 @@
 	left: 0;
 	right: 0;
 	z-index: -1;
-	
+	transition: 3000ms all ease-in-out;
+	clip-path: polygon(100% 0, 0 0, 0 0, 100% 0);
 	@media #{$lg,$md,$sm,$xs,$xxs} {
 		display: none;
+	}
+	&:is(.active) {
+		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 	}
 }
 .sn-hero-text {
 	margin: 0 auto;
-	max-width: 760px;
+	max-width: 725px;
 	margin-bottom: 68px;
 	@media #{$sm,$xs,$xxs} {
 		margin-bottom: 40px;
@@ -109,6 +137,8 @@
 	border: 1px solid #FFFFFFB8;
 	box-shadow: 0px 6px 12px 0px #00000033 inset;
 	backdrop-filter: blur(24px);
+	transform-style: preserve-3d;
+	will-change: transform;
 	@media #{$xxs} {
 		padding: 5px;
 	}

@@ -74,7 +74,14 @@
 		display: none;
 	}
 }
-
+@keyframes spin {
+	from {
+		transform:rotateX(0deg);
+	}
+	to {
+		transform:rotateX(360deg);
+	}
+}
 .sn-price-item {
 	padding: 12px;
 	border-radius: 12px;
@@ -143,7 +150,16 @@
 				text-align: center;
 				color: var(--sn-black1);
 				background-color: #E8EAEC;
+				&:hover {
+					color: #fff;
+					background-color: #605BFF;
+				}
 			}
+		}
+	}
+	&:hover {
+		.item-icon {
+			animation: 2s spin infinite;
 		}
 	}
 }

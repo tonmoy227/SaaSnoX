@@ -8,6 +8,49 @@
 	@media #{$xs,$xxs} {
 		margin-top: 70px;
 	}
+	&:is(.active) {
+		.sn-tools-shape {
+			transition-delay: 300ms;
+			clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+		}
+		.sn-tools-left {
+			.sn-tl-icon {
+				transform: scale(1);
+				&:nth-child(1) {
+					transition-delay: 2.4s;
+				}
+				&:nth-child(2) {
+					transition-delay: 2.5s;
+				}
+				&:nth-child(3) {
+					transition-delay: 2.6s;
+				}
+				&:nth-child(4) {
+					transition-delay: 2.7s;
+				}
+			}
+		}
+		.sn-tools-right {
+			.sn-tl-icon {
+				transform: scale(1);
+				&:nth-child(1) {
+					transition-delay: 2.4s;
+				}
+				&:nth-child(2) {
+					transition-delay: 2.5s;
+				}
+				&:nth-child(3) {
+					transition-delay: 2.6s;
+				}
+				&:nth-child(4) {
+					transition-delay: 2.7s;
+				}
+			}
+		}
+		.sn-tools-logo {
+			transform: translateY(-50%) scale(1);
+		}
+	}
 }
 .sn-tl-icon {
 	width: 76px;
@@ -17,6 +60,8 @@
 }
 .sn-tools-shape {
 	height: 355px;
+	transition: all 2500ms ease-in-out;
+	clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
 	@media #{$xs,$xxs} {
 		height: 200px;
 	}
@@ -27,14 +72,20 @@
 	}
 }
 .sn-tools-left {
+	height: 100%;
+	width: 100%;
+	position: absolute;
 	@media #{$xs,$xxs} {
 		gap: 15px;
 		display: flex;
 		flex-wrap: wrap;
+		position: static;
 		justify-content: center;
 	}
 	.sn-tl-icon {
 		position: absolute;
+		transform: scale(0);
+		transition: all 700ms ease-in-out;
 		@media #{$xs,$xxs} {
 			position: static;
 		}
@@ -68,8 +119,9 @@
 	height: 160px;
 	margin: 0 auto;
 	border-radius: 100%;
-	transform: translateY(-50%);
 	border: 2px solid transparent;
+	transform: translateY(-50%) scale(0);
+	transition: all 800ms ease-in-out;
 	background: linear-gradient(#fff, #fff) padding-box,linear-gradient(94.57deg, #34C9FF 0%, #8BA3FF 33.06%, #FD76E8 66.11%, #FF9951 100%) border-box;
 	@media #{$xs,$xxs} {
 		top: 50%;
@@ -93,14 +145,21 @@
 	}
 }
 .sn-tools-right {
+	top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
 	@media #{$xs,$xxs} {
 		gap: 15px;
 		display: flex;
 		flex-wrap: wrap;
+		position: static;
 		justify-content: center;
 	}
 	.sn-tl-icon {
 		position: absolute;
+		transform: scale(0);
+		transition: all 700ms ease-in-out;
 		@media #{$xs,$xxs} {
 			position: static;
 		}

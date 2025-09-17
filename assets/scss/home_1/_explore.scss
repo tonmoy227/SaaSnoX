@@ -49,6 +49,7 @@
 		content: '';
 		position: absolute;
 		border-radius: 100%;
+		transition: all 500ms ease-in-out;
 	}
 	&:before {
 		opacity: .08;
@@ -66,6 +67,14 @@
 	p {
 		max-width: 500px;
 		letter-spacing: -.5px;
+	}
+	&:hover {
+		&:before {
+			left: 10px;
+		}
+		&:after {
+			left: 0;
+		}
 	}
 }
 @keyframes PROGRESSBAR {

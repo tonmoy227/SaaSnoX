@@ -118,7 +118,24 @@
 			font-family: var(--sn-inter);
 			a {
 				font-weight: 500;
+				position: relative;
 				color: rgba(255, 255, 255, .8);
+				&:before {
+					left: 0;
+					bottom: 0;
+					width: 0%;
+					height: 1px;
+					content: '';
+					position: absolute;
+					transition: all 500ms ease-in-out;
+					background-color: #34C9FF;
+				}
+				&:hover {
+					transform: translateX(10px);
+					&:before {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}
@@ -151,6 +168,13 @@
 		i {
 			margin-right: 5px;
 			color: rgba(255, 255, 255, 1);
+			transition: all 500ms ease-in-out;
+		}
+		&:hover {
+			color: #34C9FF;
+			i {
+				transform: scale(1.1);
+			}
 		}
 	}
 }
