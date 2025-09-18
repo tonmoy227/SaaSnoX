@@ -10,13 +10,15 @@
 		max-width: 100%;
 	}
 	.accordion-item,
-	.accordion-button:not(.collapsed),
 	.accordion-button {
 		background-color: transparent;
+		transition: all 500ms ease-in-out;
+	}
+	.accordion-button:not(.collapsed) {
+		background-color: #fff;
 	}
 	.accordion-item {
 		border: none;
-		padding: 35px 40px;
 		border-bottom: 1px solid #242D3133;
 		transition: all 500ms ease-in-out;
 		&:last-child {
@@ -25,9 +27,6 @@
 		@media #{$xxs} { 
 			padding: 23px 15px 23px 25px;
 		}
-		&:is(.faq_active) {
-			background-color: #fff;
-		}
 	}
 	.accordion-button {
 		padding: 0;
@@ -35,8 +34,8 @@
 		font-size: 20px;
 		font-weight: 500;
 		position: relative;
+		padding: 34px 40px;
 		color: var(--sn-black1);
-		transition: all 500ms ease;
 		span {
 			max-width: 85%;
 			display: inline-block;
@@ -50,14 +49,21 @@
 	.accordion-body {
 		color: #535862;
 		font-size: 18px;
-		line-height: 30px;
 		line-height: 1.667;
-		padding: 5px 0px 0px;
+		padding: 0px 40px 40px;
 		font-family: var(--sn-inter);
+		transition: all 500ms ease-in-out;
+	}
+	.accordion-collapse {
+		&:is(.show) {
+			.accordion-body {
+				background-color: #fff;
+			}
+		}
 	}
 	.accordion-button::after {
-		top: 5px;
-		right: 0;
+		top: 40px;
+		right: 30px;
 		opacity: .7;
 		font-size: 16px;
 		content: '\f078';
@@ -72,7 +78,6 @@
 	.accordion-button:not(.collapsed) { 
 		box-shadow: none;
 		font-weight: 600;
-		padding-bottom: 15px;
 		&:after {
 			opacity: 1;
 			content: '\f078';

@@ -2198,6 +2198,18 @@ a:hover, a:focus {
 .sn-hero-sec {
   padding-left: 52px;
   padding-right: 52px;
+  position: relative;
+}
+.sn-hero-sec:before {
+  left: 0;
+  width: 100%;
+  bottom: -75%;
+  z-index: 2;
+  content: "";
+  height: 100%;
+  position: absolute;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(74.04%, #F4F4F4), to(rgba(244, 244, 244, 0)));
+  background: linear-gradient(360deg, #F4F4F4 74.04%, rgba(244, 244, 244, 0) 100%);
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), only screen and (min-width: 481px) and (max-width: 575px), (max-width: 480px) {
   .sn-hero-sec {
@@ -2406,6 +2418,7 @@ a:hover, a:focus {
   left: 0;
   width: 100%;
   bottom: -75%;
+  z-index: 1;
   content: "";
   height: 100%;
   position: absolute;
@@ -2769,7 +2782,6 @@ a:hover, a:focus {
 }
 .sn-feature-item3 .item-text p {
   font-size: 18px;
-  letter-spacing: -1px;
   -webkit-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
 }
@@ -2790,20 +2802,20 @@ a:hover, a:focus {
   color: #fff;
   opacity: 0.72;
 }
-.sn-feature-item3:hover {
+.sn-feature-item3:hover, .sn-feature-item3:is(.active) {
   background-color: #000000;
 }
-.sn-feature-item3:hover .item-icon:after {
+.sn-feature-item3:hover .item-icon:after, .sn-feature-item3:is(.active) .item-icon:after {
   background: -webkit-gradient(linear, left top, left bottom, from(#222222), to(#000000));
   background: linear-gradient(180deg, #222222 0%, #000000 100%);
 }
-.sn-feature-item3:hover .item-icon svg path {
+.sn-feature-item3:hover .item-icon svg path, .sn-feature-item3:is(.active) .item-icon svg path {
   fill: #fff;
 }
-.sn-feature-item3:hover .item-text h3 {
+.sn-feature-item3:hover .item-text h3, .sn-feature-item3:is(.active) .item-text h3 {
   color: #fff;
 }
-.sn-feature-item3:hover .item-text p {
+.sn-feature-item3:hover .item-text p, .sn-feature-item3:is(.active) .item-text p {
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -2831,6 +2843,7 @@ a:hover, a:focus {
 }
 
 .sn-feature-item4 {
+  z-index: 1;
   margin-top: 22px;
   border-radius: 12px;
   padding: 35px 32px 0px;
@@ -2848,6 +2861,16 @@ a:hover, a:focus {
     max-width: 100%;
     width: 100%;
   }
+}
+.sn-feature-item4 .sn_cir_shape1 {
+  top: -30%;
+  left: -40%;
+  z-index: -1;
+}
+.sn-feature-item4 .sn_cir_shape2 {
+  top: 5%;
+  z-index: -1;
+  right: -60%;
 }
 .sn-feature-item4 .sn-shape1,
 .sn-feature-item4 .sn-shape2 {
@@ -2874,7 +2897,6 @@ a:hover, a:focus {
   color: #535862;
   font-size: 18px;
   max-width: 235px;
-  letter-spacing: -1px;
 }
 .sn-feature-item4 .item-img {
   right: -56%;
@@ -3837,13 +3859,16 @@ a:hover, a:focus {
   }
 }
 .sn-faq-content .accordion-item,
-.sn-faq-content .accordion-button:not(.collapsed),
 .sn-faq-content .accordion-button {
   background-color: transparent;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.sn-faq-content .accordion-button:not(.collapsed) {
+  background-color: #fff;
 }
 .sn-faq-content .accordion-item {
   border: none;
-  padding: 35px 40px;
   border-bottom: 1px solid rgba(36, 45, 49, 0.2);
   -webkit-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
@@ -3856,18 +3881,14 @@ a:hover, a:focus {
     padding: 23px 15px 23px 25px;
   }
 }
-.sn-faq-content .accordion-item:is(.faq_active) {
-  background-color: #fff;
-}
 .sn-faq-content .accordion-button {
   padding: 0;
   border: none;
   font-size: 20px;
   font-weight: 500;
   position: relative;
+  padding: 34px 40px;
   color: var(--sn-black1);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
 }
 .sn-faq-content .accordion-button span {
   max-width: 85%;
@@ -3881,14 +3902,18 @@ a:hover, a:focus {
 .sn-faq-content .accordion-body {
   color: #535862;
   font-size: 18px;
-  line-height: 30px;
   line-height: 1.667;
-  padding: 5px 0px 0px;
+  padding: 0px 40px 40px;
   font-family: var(--sn-inter);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.sn-faq-content .accordion-collapse:is(.show) .accordion-body {
+  background-color: #fff;
 }
 .sn-faq-content .accordion-button::after {
-  top: 5px;
-  right: 0;
+  top: 40px;
+  right: 30px;
   opacity: 0.7;
   font-size: 16px;
   content: "\f078";
@@ -3905,7 +3930,6 @@ a:hover, a:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
   font-weight: 600;
-  padding-bottom: 15px;
 }
 .sn-faq-content .accordion-button:not(.collapsed):after {
   opacity: 1;

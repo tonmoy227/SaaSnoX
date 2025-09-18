@@ -138,7 +138,15 @@ Last change:    00/00/00
 			}
 		});
 	});
+	$('.sn-item-active').each(function () {
+		var $wrap = $(this);
+		var $items = $wrap.find('.sn-feature-item3');
 
+		$items.on('mouseover', function () {
+			$items.removeClass('active');
+			$(this).addClass('active');
+		});
+	});
 	// windows-loaded-before-functions
 	document.addEventListener("DOMContentLoaded", function () {
 		window.addEventListener('load', function(){
@@ -424,9 +432,7 @@ Last change:    00/00/00
 	});
 
 
-	$(document).on('click', '.sn-faq-content .accordion-item', function(){
-		$(this).addClass('faq_active').siblings().removeClass('faq_active')
-	});
+
 	gsap.utils.toArray(' .sn-feature-badge .item-line').forEach((el, index) => { 
 		let tlcta = gsap.timeline({
 			scrollTrigger: {

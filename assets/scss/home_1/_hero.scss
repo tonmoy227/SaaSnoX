@@ -1,6 +1,17 @@
 .sn-hero-sec {
 	padding-left: 52px;
 	padding-right: 52px;
+	position: relative;
+	&:before {
+		left: 0;
+		width: 100%;
+		bottom: -75%;
+		z-index: 2;
+		content: '';
+		height: 100%;
+		position: absolute;
+		background: linear-gradient(360deg, #F4F4F4 74.04%, rgba(244, 244, 244, 0) 100%);
+	}
 	@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
 		padding-left: 15px;
 		padding-right: 15px;
@@ -146,6 +157,7 @@
 		left: 0;
 		width: 100%;
 		bottom: -75%;
+		z-index: 1;
 		content: '';
 		height: 100%;
 		position: absolute;
