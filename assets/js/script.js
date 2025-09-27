@@ -543,4 +543,60 @@ Last change:    00/00/00
 		.from(el, { opacity: 0,  yPercent: 100}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
 	});
 
+
+	if ($('.sn-team-slider').length > 0 ) {
+		var slider = new Swiper('.sn-team-slider', {
+			spaceBetween: 20,
+			slidesPerView: 4,
+			loop: true,
+			autoplay: {
+				enabled: true,
+				delay: 6000
+			},
+			speed: 400,
+			breakpoints: {
+				'1600': {
+					slidesPerView: 4,
+				},
+				'1300': {
+					slidesPerView: 3,
+				},
+				'1200': {
+					slidesPerView: 4,
+				},
+				'992': {
+					slidesPerView: 4,
+				},
+				'768': {
+					slidesPerView: 3,
+				},
+				'576': {
+					slidesPerView: 2,
+				},
+				'480': {
+					slidesPerView: 2,
+				},
+				'360': {
+					slidesPerView: 1,
+				},
+			},
+		});
+	};
+
+	if ($('.blog-item-img-slide').length > 0 ) {
+		var blog_Slider = new Swiper(".blog-item-img-slide", {
+			loop: true,
+			slidesPerView: 1,
+			centeredSlides: true,
+			speed: 1000,
+			navigation: {
+				nextEl: ".log-blog-button-prev",
+				prevEl: ".log-blog-button-next",
+			},
+		});
+	}
+
+
+
+
 })(jQuery);

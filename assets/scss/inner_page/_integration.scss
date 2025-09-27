@@ -1,0 +1,43 @@
+.sn-integration-item {
+	padding: 45px 40px;
+	border-radius: 12px;
+	margin-bottom: 32px;
+	background-color: #fff;
+	transition: all 500ms ease-in-out;
+	.item-title {
+		gap: 24px;
+		h3 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+	}
+	.item-icon {
+		z-index: 1;
+		width: 64px;
+		height: 64px;
+		position: relative;
+		border-radius: 100%;
+		&:before,
+		&:after {
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			content: '';
+			position: absolute;
+			border-radius: 100%;
+			background: linear-gradient(180deg, #F4F4F4 0%, #FFFFFF 100%);
+		}
+		&:after {
+			top: 4px;
+			z-index: -2;
+			background: linear-gradient(94.57deg, #34C9FF 0%, #8BA3FF 33.06%, #FD76E8 66.11%, #FF9951 100%);
+		}
+	}
+	&:hover {
+		box-shadow: 
+		0px 0px 14px 0px #605BFF52 inset,
+		8px 8px 28px 0px #0000001F;
+	}
+}

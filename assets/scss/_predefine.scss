@@ -404,6 +404,30 @@ a {
 	}
 }
 
+.sn-pagination {
+	li {
+		margin: 0px 3px;
+		a {
+			width: 52px;
+			height: 52px;
+			display: flex;
+			color: #000000;
+			font-weight: 500;
+			border-radius: 4px;
+			align-items: center;
+			background-color: #fff;
+			justify-content: center;
+			border: 2px solid #F1F1F1;
+			&:hover {
+				color: #fff;
+				border: 2px solid #605BFF;
+				background-color: #605BFF;
+			}
+		}
+	}
+}
+
+
 // txa-common-css-start
 
 @for $i from 1 through 40 {
